@@ -1,0 +1,4 @@
+cache/**/*
+!cache/zookeeper-*.tar.gz
+!cache/kafka_*.tgz
+!cache/schema-registry-*.tar
