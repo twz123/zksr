@@ -44,4 +44,4 @@ apache_download zookeeper/zookeeper-3.4.9 zookeeper-3.4.9.tar.gz e7f340412a61c79
 apache_download kafka/0.10.1.0 kafka_2.11-0.10.1.0.tgz 6d9532ae65c9c8126241e7b928b118aaa3a694dab08069471f0e61f4f0329390
 [ -f "$BUILD_DIR/cache/schema-registry-3.2.1.tar" ] || package_schema_registry
 
-docker build "$BUILD_DIR" -t zksr
+docker build "$BUILD_DIR" -t "${1:-zksr}"

@@ -1,8 +1,17 @@
 language: generic
 sudo: required
-
 services:
-  - docker
+- docker
+
+env:
+  global:
+  - secure: G9reFQflnvD9mxxW91UzTHwvI7DBkwlA2O42R24voI6bJOCmdTi1ppdhjEu2idh+PY/iLtm1A8kp6V4jfu0Rhi0wtqdsM7x2RoUptbK8l1IHqgEgAhsWL2RaCN7owrM4Cdtqsi1Fo7Kc5h8K8cwMPzDLI+Ey4MVKPe1eF1v0GMs/i3wdQFXR7GwOT5WMIwcav0FJ4rGhU42vK+Q7EipxeneaqEVPqUQAYpL2NeBey0JcYq/IMpvBgGX61ey8+kzmHkTkwA3CtdmkzryYz9JIjzzCgO3aBpQK7ia1Ie6GflauNVuNsUFFgrdtBxb4eRmuuRFm6lufkNo6u8E+PF9w2MhYRviGxfZH9kqSXwpSJjuMy8/c3y8jBpFROneZ0bhUW1cDALTWGzzFSY0XeBb8LDOHbZOANsNX6nHjpscbs/5UR0EO3WprfC0eMrarlP1590xl+T7v5xXfN/mqHBSSJ/w2cN1oNHo8T81bZSEkB+cQTVxcwBoXkH371OMm+3WkchdQAhn4JLDF/CPmh1AV2qz0aTjN6RBkIFZw6WxMCY5KvzUQmE0kOQE3ATf0fo8DfeZxjOBSYAiv06xP2y6rL1tBk85WO8YB5QwoNsK1g9KxyzAyVNTpZBvTRHfVeU3Ircw6vJ4dqpvNU3t4DvRgmhunXMAytaSteHvZOog8IxQ=
+  - secure: QnAgiftX+w+/9UYvypwrQYipdgGH/fjfdSoNKJdXAjCF6GGeNGn/izXkRuMOvacKxoCW3Mu12fM1l3+m9DIzm0w95XiAclW0tn34oQ84a4q69eJmDAE0bVBqtUvIbawMTcOlESvzITOyvJM5RbHMQjCt9H5T+W9s0WuVz2NeRzqLgX+bNeQkShemOOqpW5uUtw21FeyWa68YSNfHlGF9xCViiFSH2F0wIuAN/QCMdp9CyzWZCASRcYBVhu628+dQzJ7tFHGyYnQBhVa9/gbHJxN4iP+PlphpwzFhL6Unogin8tKHkJ0faSas0esG77FKpqvmFDSU7GIbZIGPNASgscDFZGPxQ2dNaKFkw4Ey9nTHRNlnKbS6Sd+yhe63hFNaTX7bMx1apsasEMrt0hBYcMNRmRhw01gvfKmtC6qvmaKav3oNqmgvNL535VNE0OFZx24zdE+yf5v7S19S3/y3qUb/ZA6pglxIjNfsJY3yz8zoRFGCfIH7QHUGfYS7DC4dM1uzcmXDnkXSwLxKV05jtFC5ve+p2ige3dv5PfgVZjHLNpK3sYDS/7OlRjAr24o1ViNbxWZaz+3LHn8lGSRyAtTVZ2VbDmNczS1eDaiV9f7f3ueSiu4HTtE6fY1I44M/zhOolU6SC+kmH9BxOtDSZ9ejIQkuRuw2fuNnSqUTizo=
 
 script:
-- ./build.sh
+- ./build.sh "quay.io/twz123/zksr:$TRAVIS_COMMIT"
+
+after_success: |
+  if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then
+    docker login -u="$QUAY_USER" -p="$QUAY_TOKEN" quay.io && docker push "quay.io/twz123/zksr:$TRAVIS_COMMIT"
+  fi
