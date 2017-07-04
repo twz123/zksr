@@ -9,7 +9,7 @@ set -e
 
 SCHEMA_REGISTRY_VERSION="$1"
 OUTPUT_FOLDER="$2"
-M2_REPO="http://packages.confluent.io/maven/io/confluent"
+M2_REPO="https://packages.confluent.io/maven/io/confluent"
 
 [ -d "$OUTPUT_FOLDER" ] || {
     echo "Not a directory: $OUTPUT_FOLDER" 1>&2
