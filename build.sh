@@ -25,7 +25,7 @@ package_schema_registry() {
     docker run -i -v "$BUILD_DIR/cache:/build-cache" -u $( id -u ):$( id -g ) \
         -e MAVEN_CONFIG=/build-cache/.m2 \
         -e MAVEN_OPTS=-Duser.home=/build-cache \
-        maven:3.5.0-jdk-8-alpine \
+        maven:3.5.0-jdk-8 \
         sh -s -- 3.2.1 /build-cache < "$BUILD_DIR/package-schema-registry.sh"
 }
 
