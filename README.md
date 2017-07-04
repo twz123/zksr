@@ -7,6 +7,9 @@ All-in-one Docker image for [Kafka][kafka-home] and the
     K=Kafka
     SR=Schema Registry
 
+[![Build Status](https://travis-ci.org/twz123/zksr.svg?branch=master)](https://travis-ci.org/twz123/zksr)
+[![Docker Repository on Quay](https://quay.io/repository/twz123/zksr/status "Docker Repository on Quay")](https://quay.io/repository/twz123/zksr)
+
 [kafka-home]: https://kafka.apache.org
 [sr-home]: https://github.com/confluentinc/schema-registry
 
@@ -17,7 +20,7 @@ Images are built by [Travis CI][zksr-travis] and pushed to [Quay][zksr-quay]:
     quay.io/twz123/zksr:$GIT_COMMIT
 
 [zksr-travis]: https://travis-ci.org/twz123/zksr
-[zksr-quay]: https://quay.io/repository/twz123/zksr
+[zksr-quay]: https://quay.io/repository/twz123/zksr?tab=tags
 
 ## Building
 
