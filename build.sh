@@ -40,8 +40,8 @@ BUILD_DIR="$( cd -- "$( dirname "$0" )" ; pwd -P )"
 
 mkdir -p -- "$BUILD_DIR/cache"
 
-apache_download zookeeper/zookeeper-3.4.9 zookeeper-3.4.9.tar.gz e7f340412a61c7934b5143faef8d13529b29242ebfba2eba48169f4a8392f535
-apache_download kafka/0.10.1.0 kafka_2.11-0.10.1.0.tgz 6d9532ae65c9c8126241e7b928b118aaa3a694dab08069471f0e61f4f0329390
+apache_download zookeeper/zookeeper-3.4.14 zookeeper-3.4.14.tar.gz b14f7a0fece8bd34c7fffa46039e563ac5367607c612517aa7bd37306afbd1cd
+download kafka_2.11-0.10.1.0.tgz 6d9532ae65c9c8126241e7b928b118aaa3a694dab08069471f0e61f4f0329390 https://archive.apache.org/dist/kafka/0.10.1.0/kafka_2.11-0.10.1.0.tgz
 [ -f "$BUILD_DIR/cache/schema-registry-3.2.1.tar" ] || package_schema_registry
 
 docker build "$BUILD_DIR" -t "${1:-zksr}"
